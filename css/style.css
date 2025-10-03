@@ -1,0 +1,81 @@
+@import url('sidebar.css');
+@import url('container.css');
+@import url('gerenciar-produtos.css');
+@import url('gerenciar-pedidos.css');
+@import url('gerenciar-vendas.css');
+@import url('gerenciar-configuracoes.css');
+@import url('gerenciar-admin.css');
+@import url('add-produto.css');
+@import url('excluir-produto.css');
+@import url('detalhes-pedidos.css');
+
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo geral */
+
+body {
+    /*display: flex;*/
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+strong {
+    color: #2980b9;
+}
+
+/* Cabeçalho da seção */
+header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    text-align: center;
+}
+
+header p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Estilo para a seção de configurações */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Estilo Botões */
+.btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #2980b9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3498db;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    margin-left: 10px;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn-container {
+    margin-top: 10px;
+    text-align: center;
+}

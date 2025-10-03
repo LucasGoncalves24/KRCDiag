@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<title>Visualizador de Logs</title>
+		
+		
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+		<script src="js/main.js"></script>
+		
+		<link rel="stylesheet" href="tablesorter-master/css/theme.ice.css"/>        
+		<script src="tablesorter-master/js/jquery.tablesorter.js"></script>         
+		<script src="tablesorter-master/js/jquery.tablesorter.widgets.js"></script>
+		
+		<link rel="stylesheet" href="css/style.css">
+		
+		<style>
+			body {
+			font-family: Arial, sans-serif;
+			padding: 20px;
+			background: #f5f5f5;
+			}
+			h2 {
+			margin-bottom: 10px;
+			}
+			input {
+			margin-bottom: 20px;
+			}
+			table {
+			border-collapse: collapse;
+			width: 100%;
+			background: white;
+			box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+			}
+			th, td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+			}
+			th {
+			background: #333;
+			color: white;
+			}
+			tr.aviso {
+			background: #fff3cd;
+			}
+			tr.info {
+			background: #cce5ff;
+			}
+			tr.erro {
+			background: #f8d7da;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<h2>Carregar Arquivo de Logs</h2>
+		<input type="file" id="fileInput" accept=".txt">
+		
+		<div id="tableContainer"></div>
+		
+		<script>
+			document.getElementById('fileInput').addEventListener('change', function(event) {
+				const file = event.target.files[0];
+				if (!file) return;
+				
+				const reader = new FileReader();
+				reader.onload = function(e) {
+					const text = e.target.result;
+					
+					// Divide os registros por linhas em branco
+					const blocos = text.split(/\n\s*\n/);
+					
+					// Expressão regular para capturar os dados
+					const regex = /Registro\s+(\d+)\s+\((.*?),\s*(.*?)\)\s*\n([\d\- :']+)\s*\n([\s\S]*?)\s*Módulo:\s*(\w+)\s+Número da mensagem:\s*(\d+)/;
+					
+					let tabela = `
+					<table class="tabela-vendas tablesorter tablesorter-ice galeria">
+					<thead>
+					<tr>
+			
+				<th class="filter-select filter-onlyAvail">Origem</th>
+				<th class="filter-select filter-onlyAvail">Categoria</th>
+				<th>Data/Hora</th>
+				<th>Mensagem</th>
+				<th class="filter-select filter-onlyAvail">Módulo</th>
+				<th class="filter-select filter-onlyAvail">Código</th>
+			</tr>
+		</thead>
+		<tbody>
+			`;
+			
+			blocos.forEach(bloco => {
+			const match = bloco.match(regex);
+			if (match) {
+
+			const origem = match[2];       // "Sistema" ou "Introdução do usuário"
+			const categoria = match[3];    // "Aviso", "Informação", "Erro"
+			const data = match[4];
+			const mensagem = match[5].trim();
+			const modulo = match[6];
+			const codigo = match[7];
+			
+			// Definir classe de cor baseada na categoria
+			let classe = "";
+			if (categoria.toLowerCase().includes("aviso")) classe = "aviso";
+			else if (categoria.toLowerCase().includes("informação")) classe = "info";
+			else if (categoria.toLowerCase().includes("erro")) classe = "erro";
+			
+			tabela += `
+			<tr class="${classe}">
+			
+				<td>${origem}</td>
+				<td>${categoria}</td>
+				<td>${data}</td>
+				<td>${mensagem}</td>
+				<td>${modulo}</td>
+				<td>${codigo}</td>
+			</tr>
+			`;
+			}
+			});
+			
+			
+			
+		tabela += "</tbody></table>";
+        document.getElementById('tableContainer').innerHTML = tabela;
+		
+		// inicializar tablesorter DEPOIS que a tabela foi criada
+		$(".tablesorter").tablesorter({
+		theme: "ice",
+		widgets: ["zebra", "filter"]
+		});
+		
+		};
+		
+		reader.readAsText(file);
+		});
+</script>
+
+</body>
+</html>
