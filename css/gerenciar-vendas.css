@@ -1,0 +1,99 @@
+/* =============================
+   Estilos Gerais da Tabela de Vendas
+   ============================= */
+.tabela-vendas {
+    width: 100%;                   /* A tabela ocupa 100% da largura disponível */
+    border-collapse: collapse;     /* Remove espaçamentos entre bordas das células */
+    margin-top: 20px;              /* Espaço acima da tabela */
+    font-family: Arial, sans-serif;/* Fonte usada na tabela */
+}
+
+/* =============================
+   Estilo das Células (Cabeçalho e Conteúdo)
+   ============================= */
+.tabela-vendas th,
+.tabela-vendas td {
+    padding: 12px;                 /* Espaçamento interno nas células */
+    text-align: left;             /* Alinha o conteúdo à esquerda por padrão */
+    border-bottom: 1px solid #ddd;/* Linha inferior discreta separando as linhas */
+}
+
+/* Estilo específico para o cabeçalho */
+.tabela-vendas th {
+    font-size: 18px;              /* Tamanho da fonte maior para o cabeçalho */
+}
+
+/* Estilo para as células do corpo da tabela */
+.tabela-vendas tbody td {
+    font-size: 14px;              /* Tamanho de fonte padrão para os dados */
+}
+
+/* Alinhamento à direita para valores numéricos ou monetários */
+.tabela-vendas .right {
+    text-align: right;
+}
+
+/* Alinhamento centralizado, usado para colunas que precisam de centralização */
+.tabela-vendas .center {
+    text-align: center;
+}
+
+/* Estilo para as células do rodapé (totalizadores, por exemplo) */
+.tabela-vendas tfoot td {
+    font-size: 18px;              /* Destaque com fonte maior no rodapé */
+}
+
+/* =============================
+   Estilo Customizado para TableSorter (Tema Ice)
+   ============================= */
+
+/* Estilo para os cabeçalhos quando o tema "tablesorter-ice" está ativo */
+.tablesorter-ice .tablesorter-header {
+    background-color: #34495e;     /* Cor de fundo azul escuro */
+    color: white;                  /* Texto branco */
+    padding: 3px 3px 3px 14px !important; /* Espaçamento interno, com indentação à esquerda */
+    vertical-align: middle;        /* Alinha verticalmente o texto no centro */
+}
+
+/* Estilo para os campos de filtro (input e select) do TableSorter */
+.tablesorter-ice input.tablesorter-filter,
+.tablesorter-ice select.tablesorter-filter {
+    background-color: #f5fbd8 !important; /* Cor de fundo suave (amarelada) */
+    padding: 2px !important;              /* Espaçamento interno dos filtros */
+    border: 0 !important;                 /* Remove bordas padrão */
+    width: 100% !important;              /* Ocupa toda a largura da célula */
+}
+
+.tb-fixed td,
+.tb-fixed th {
+    border: 1px solid #ccc;
+    padding: 3px 2px;
+    cursor: default;
+}
+
+.tb-fixed th {
+    background-color: #E7E7E7;
+    font-weight: bold;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+.tb-fixed td input,
+.tb-fixed td select,
+.tb-fixed td textarea,
+.tb-fixed td button {
+    padding: 0 0 0 4px;
+	border: none;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+#tb-itens input.search {
+    width: 100%;
+}
+
+#tabelaItens{
+	margin-bottom: 20px;
+}

@@ -1,0 +1,45 @@
+/* Seção de configuração de conta */
+#account-settings {
+    margin-bottom: 20px;
+}
+
+#account-settings h2,
+#payment-settings h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Seção de opções de pagamento */
+#account-settings label,
+#payment-settings label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Estilo para os formulários de configurações */
+#account-settings form,
+#payment-settings form {
+    margin-top: 5px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#account-settings form input[type="text"],
+#account-settings form input[type="email"],
+#account-settings form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+#payment-settings form input[type="checkbox"] {
+    margin-right: 10px;
+}
